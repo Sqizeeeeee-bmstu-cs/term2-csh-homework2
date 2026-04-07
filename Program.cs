@@ -1,8 +1,9 @@
 ﻿using Microsoft.Data.Sqlite;
 
 string dbPath = "university.db";
-string deptCsv = Path.Combine(AppContext.BaseDirectory, "departments.csv");
-string teacherCsv = Path.Combine(AppContext.BaseDirectory, "teachers.csv");
+string deptCsv = "departments.csv";
+string teacherCsv = "teachers.csv";
+
 
 var db = new DatabaseManager(dbPath);
 db.InitializeDatabase(deptCsv, teacherCsv);
@@ -13,15 +14,15 @@ string choice;
 do
 {
     Console.WriteLine("╔════════════════════════════════════════════╗");
-    Console.WriteLine("║     УПРАВЛЕНИЕ КАФЕДРАМИ И ПРЕПОДАВАТЕЛЯМИ   ║");
+    Console.WriteLine("║     УПРАВЛЕНИЕ КАФЕДРАМИ И ПРЕПОДАВАТЕЛЯМИ ║");
     Console.WriteLine("╠════════════════════════════════════════════╣");
-    Console.WriteLine("║ 1 — Показать все кафедры                    ║");
-    Console.WriteLine("║ 2 — Показать всех преподавателей            ║");
-    Console.WriteLine("║ 3 — Добавить преподавателя                  ║");
-    Console.WriteLine("║ 4 — Редактировать преподавателя             ║");
-    Console.WriteLine("║ 5 — Удалить преподавателя                   ║");
-    Console.WriteLine("║ 6 — Отчёты                                  ║");
-    Console.WriteLine("║ 0 — Выход                                   ║");
+    Console.WriteLine("║ 1 — Показать все кафедры                   ║");
+    Console.WriteLine("║ 2 — Показать всех преподавателей           ║");
+    Console.WriteLine("║ 3 — Добавить преподавателя                 ║");
+    Console.WriteLine("║ 4 — Редактировать преподавателя            ║");
+    Console.WriteLine("║ 5 — Удалить преподавателя                  ║");
+    Console.WriteLine("║ 6 — Отчёты                                 ║");
+    Console.WriteLine("║ 0 — Выход                                  ║");
     Console.WriteLine("╚════════════════════════════════════════════╝");
     Console.Write("Ваш выбор: ");
 
