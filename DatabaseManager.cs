@@ -49,9 +49,46 @@ public class DatabaseManager
     public List<Teacher> GetAllTeachers()
     {
         var result = new List<Teacher>();
-        // ... твой код ...
-        // Для преподавателя порядок: ID (0), DepId (1), Name (2), Publications (3)
+
+        using var connection = new SqliteConnection(_connectionString);
+        connection.Open();
+        var cmd = connection.CreateCommand();
+        cmd.CommandText = "SELECT teacher_id, dep_id, teacher_name, publications FROM teacher ORDER BY teacher_id";
+        
+        var reader = cmd.ExecuteReader();
+
+        while (reader.Read())
+        {
+            result.Add(new Teacher(reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2), reader.GetInt32(3)));
+        }
+
         return result;
+    }
+
+    public Teacher GetTeacherById(int id)
+    {
+        Teacher res = null;
+
+        using var connection = new SqliteConnection(_connectionString);
+        connection.Open();
+
+        var cmd = connection.CreateCommand();
+        cmd.CommandText = "SELECT teacher_id, dep_id, teacher_name, publications FROM teacher WHERE teacher_id = @id";
+        cmd.Parameters.AddWithValue("@id", id);
+
+        var reader = cmd.ExecuteReader();
+        
+        if (reader.Read())
+        {
+            res = new Teacher(
+                reader.GetInt32(0),
+                reader.GetInt32(1),
+                reader.GetString(2),
+                reader.GetInt32(3)
+            );
+        }
+
+        return res;
     }
 
 
