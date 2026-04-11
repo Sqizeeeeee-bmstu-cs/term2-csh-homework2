@@ -1,7 +1,6 @@
 
 public class Teacher
 {
-    
     public int Id {get; set; }
 
     public int DepartmentId {get; set; }
@@ -9,7 +8,7 @@ public class Teacher
     public string Name {get; set; }
 
     private int _publications;
-
+    
     public int Publications
     {
         get => _publications;
